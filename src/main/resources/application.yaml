@@ -1,0 +1,26 @@
+server:
+  port: 9090
+
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      routes:
+        - id: almacen-a
+          uri: http://localhost:9091
+          predicates:
+            - Path=/almacen-a/**
+          filters:
+            - StripPrefix=1
+        - id: almacen-b
+          uri: http://localhost:9092
+          predicates:
+            - Path=/almacen-b/**
+          filters:
+            - StripPrefix=1
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
