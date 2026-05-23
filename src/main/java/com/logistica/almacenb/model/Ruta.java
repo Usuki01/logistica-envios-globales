@@ -1,10 +1,10 @@
 package com.logistica.almacenb.model;
 
 import lombok.Data;
+import org.springframework.data.cassandra.core.mapping.Column;
 import org.springframework.data.cassandra.core.mapping.PrimaryKey;
 import org.springframework.data.cassandra.core.mapping.Table;
 
-import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Data
@@ -16,7 +16,9 @@ public class Ruta {
 
     private String origen;
     private String destino;
+
+    @Column("distancia_km")
     private Double distanciaKm;
+
     private String estado;
-    private LocalDateTime fechaCreacion = LocalDateTime.now();
 }
