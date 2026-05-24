@@ -4,7 +4,7 @@ spring:
   application:
     name: almacen-b
   datasource:
-    url: jdbc:mariadb://localhost:3306/logistica_db
+    url: jdbc:mariadb://mariadb:3306/logistica_db
     username: root
     password: root
     driver-class-name: org.mariadb.jdbc.Driver
@@ -14,7 +14,7 @@ spring:
     show-sql: true
   cassandra:
     keyspace-name: logistica_keyspace
-    contact-points: localhost
+    contact-points: cassandra
     port: 9042
     local-datacenter: datacenter1
 eureka:
