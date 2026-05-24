@@ -1,26 +1,27 @@
 server:
-  port: 9090
+  port: 9091
 
 spring:
   application:
-    name: api-gateway
-  cloud:
-    gateway:
-      routes:
-        - id: almacen-a
-          uri: http://localhost:9091
-          predicates:
-            - Path=/almacen-a/**
-          filters:
-            - StripPrefix=1
-        - id: almacen-b
-          uri: http://localhost:9092
-          predicates:
-            - Path=/almacen-b/**
-          filters:
-            - StripPrefix=1
+    name: almacen-a
+  datasource:
+    url: jdbc:mariadb://mariadb:3306/logistica_db
+    username: root
+    password: root
+    driver-class-name: org.mariadb.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  cassandra:
+    keyspace-name: logistica_keyspace
+    contact-points: cassandra
+    port: 9042
+    local-datacenter: datacenter1
 
 eureka:
   client:
     service-url:
       defaultZone: http://localhost:8761/eureka/
+    fetch-registry: false
+    register-with-eureka: false
